@@ -62,6 +62,41 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-first" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/09/first/" class="article-date">
+  <time datetime="2018-12-09T10:07:46.723Z" itemprop="datePublished">2018-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在github上搭建个人博客，hexo已经部署完毕，本地访问也没有问题，但最后hexo d就是push不上去</p>
+<p>检查了deploy，看不出有什么问题，后面百度了一下，发现有个巨坑，type: git中间必须有个空格！！！！</p>
+<p>deploy:</p>
+<p>  type: git</p>
+<p>  repository: <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:xxx/xxx.github.io.git</p>
+<p>  branch: master</p>
+<p>修改就可以hexo d 自动push了</p>
+<p><img src="/Users/xqs/Desktop/hexo.png" alt="avatar"> </p>
+<p>感谢提供答案的朋友：<a href="https://segmentfault.com/q/1010000002764038" target="_blank" rel="noopener">https://segmentfault.com/q/1010000002764038</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/09/first/" data-id="cjpgqzu3v0000iv7rolof7ne9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/25/hello-world/" class="article-date">
@@ -97,7 +132,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjpfmag8x0000xhfm7io6aztc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjpfmkrfu0000y1fmy0x3an6n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -125,7 +160,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -136,6 +171,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/09/first/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2018/11/25/hello-world/">Hello World</a>
