@@ -62,9 +62,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-shell启动脚本" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-5iomodel" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/03/17/shell启动脚本/" class="article-date">
+    <a href="/2019/03/17/5iomodel/" class="article-date">
   <time datetime="2019-03-17T14:03:10.196Z" itemprop="datePublished">2019-03-17</time>
 </a>
     
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/17/shell启动脚本/">shell启动脚本</a>
+      <a class="article-title" href="/2019/03/17/5iomodel/">常见五种IO模型</a>
     </h1>
   
 
@@ -101,7 +101,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/17/shell启动脚本/" data-id="cjtczz2kt0003ha7rq4rfxx2k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/17/5iomodel/" data-id="cjtd0fklu0000ic7rjsa9uzdn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,9 +111,9 @@
 
 
   
-    <article id="post-iomodel" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-shellscript" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/09/iomodel/" class="article-date">
+    <a href="/2018/12/09/shellscript/" class="article-date">
   <time datetime="2018-12-09T10:36:33.000Z" itemprop="datePublished">2018-12-09</time>
 </a>
     
@@ -125,7 +125,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/09/iomodel/">shell启动脚本</a>
+      <a class="article-title" href="/2018/12/09/shellscript/">shell启动脚本</a>
     </h1>
   
 
@@ -133,11 +133,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>简单记录shell脚本语法</p>
+<p>sfSrc=<code>s show | grep SfCfgName | cut -d &quot;:&quot; -f 2</code><br>  sfDst=<code>ls usr/S304/etc/oversea</code><br>  if [ $sfSrc != $sfDst ]; then<br>    echo “SfCfgName is not right”<br>    s SfCfgName oversea/$sfDst<br>  else<br>    echo “SfCfgName is right”<br>  fi</p>
+<p>脚本需要判断升级软件的SF与当前SF是否一致，否则需要修改，直接用s SfCfgName oversea/$sfDst命令修改SF</p>
+<p>主要就是上面这段代码，当时分割字符方法不熟悉，查了一下并整理了笔记</p>
+<p>shell语法整理了一些，包括一些基础命令： <a href="http://note.youdao.com/noteshare?id=ac45a75b8c041019021a68d184852b3b" target="_blank" rel="noopener">http://note.youdao.com/noteshare?id=ac45a75b8c041019021a68d184852b3b</a></p>
+<h1 id="s-show-grep-SfCfgName"><a href="#s-show-grep-SfCfgName" class="headerlink" title="s show | grep SfCfgName"></a>s show | grep SfCfgName</h1><p>SfCfgName:oversea/tejas-4f0-wifi</p>
+<p>sfSrc=<code>s show | grep SfCfgName | cut -d &quot;/&quot; -f 2</code></p>
+<p>#s show | grep SfCfgName | cut -d “/“ -f 2</p>
+<p>tejas-4f0-wifi</p>
+<p>截取后就是tejas-4f0-wifi</p>
+<p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。一般来说，选取信息通常是针对“行”来进行分析的，并不是整篇信息分析的。</p>
+<p>其语法格式为： </p>
+<p>cut [-bn] [file] 或 cut [-c] [file] 或 cut [-df] [file] </p>
+<p>使用说明: </p>
+<p>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。 </p>
+<p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。 </p>
+<p>主要参数 </p>
+<p>-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。 </p>
+<p>-c ：以字符为单位进行分割。 </p>
+<p>-d ：自定义分隔符，默认为制表符。 </p>
+<p>-f ：与-d一起使用，指定显示哪个区域。 </p>
+<p>-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/iomodel/" data-id="cjtczz2ks0002ha7r8p6xufra" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjtd0fkm20001ic7r7n4bcvhm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,11 +290,11 @@
       <ul>
         
           <li>
-            <a href="/2019/03/17/shell启动脚本/">shell启动脚本</a>
+            <a href="/2019/03/17/5iomodel/">常见五种IO模型</a>
           </li>
         
           <li>
-            <a href="/2018/12/09/iomodel/">shell启动脚本</a>
+            <a href="/2018/12/09/shellscript/">shell启动脚本</a>
           </li>
         
           <li>
