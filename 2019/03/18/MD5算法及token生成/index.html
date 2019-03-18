@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>MD5算法及token生成 | xuqiushuo&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MD5算法及token生成">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/MD5算法及token生成/index.html">
+<meta property="og:site_name" content="xuqiushuo&#39;s blog">
+<meta property="og:description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-18T16:13:28.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MD5算法及token生成">
+<meta name="twitter:description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+  
+    <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xuqiushuo&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MD5算法及token生成" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/18/MD5算法及token生成/" class="article-date">
+  <time datetime="2019-03-18T15:42:08.000Z" itemprop="datePublished">2019-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MD5算法及token生成
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。<br>　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的数学函数。<br>　　MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹)，以防止被“篡改”。举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。<br>　　MD5还广泛用于加密和解密技术上，在很多操作系统中，用户的密码是以MD5值（或类似的其它算法）的方式保存的，用户Login的时候，系统是把用户输入的密码计算成MD5值，然后再去和系统中保存的MD5值进行比较，而系统并不“知道”用户的密码是什么。<br>    当前我知道用到的有token的生成以及linuxshell串口加密都用了MD5算法。</p>
+<p>基于 Token 的身份验证方法<br>    1.使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的：<br>    2.客户端使用用户名跟密码请求登录<br>    3.服务端收到请求，去验证用户名与密码<br>    4.验证成功后，服务端会通过MD5计算签发一个 Token，再把这个 Token 发送给客户端<br>    5.客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>    6.客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>    7.服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</p>
+<p>1.获取页面传来的username及password，结合当前时间生成的tmp，将其拷贝给数据块md5inbuf，运用MD5加密算法进行计算<br>（<code>）
+static void createToken(char *userName, char* password, char* out, UINT8 len)
+{   
+    char md5inbuf[612];
+    unsigned char md5Value_TB[MD5_DIGEST_LEN] = {0};   //存放加密信息
+    char tmpOutBuf[MD5_DIGEST_LEN] = {0};      //存放加密结果
+    UINT32 tmp = 0;
+    struct timeval tv;   
+    gettimeofday(&amp;tv, NULL);     
+    tmp = tv.tv_sec % NSECS_IN_USEC + tv.tv_usec / NSECS_IN_MSEC;   
+    printf(&quot;userName = %s, password = %s, tmp =%d&quot;, userName, password, tmp);
+    UTIL_SNPRINTF(md5inbuf, sizeof(md5inbuf), &quot;%s%s%d&quot;, userName, password,tmp);    
+    MD5_encrypt(md5Value_TB, (unsigned char*)md5inbuf);
+    hex2ascii(md5Value_TB, MD5_DIGEST_LEN, tmpOutBuf);
+    UTIL_STRNCPY(out, tmpOutBuf, len);
+}
+（</code>）</p>
+<p>2.运用结构体MD5Context，初始化（数据自定义），将传入的数据更新进去（计算加密），最终生成结果<br>(<code>`</code>)<br>typedef struct MD5Context {<br>  u_int32_t buf[4];<br>  u_int32_t bits[2];<br>  u_char in[64];<br>} MD5Context;<br>void MD5_encrypt(unsigned char <em>out, const unsigned char </em>in)<br>{<br>    MD5Context ctx;<br>    MD5Init( &amp;ctx );   //初始化<br>    MD5Update(&amp;ctx, in, strlen((char<em>)in));  //对欲加密的字符进行加密<br>    MD5Final(out, &amp;ctx);   //获得最终结果<br>}<br>void MD5Init(struct MD5Context </em>ctx)<br>{<br>        ctx-&gt;buf[0] = 0x67452301;<br>        ctx-&gt;buf[1] = 0xefcdab89;<br>        ctx-&gt;buf[2] = 0x98badcfe;<br>        ctx-&gt;buf[3] = 0x10325476;<br>        ctx-&gt;bits[0] = 0;<br>        ctx-&gt;bits[1] = 0;<br>}<br>/*</p>
+<ul>
+<li>Update context to reflect the concatenation of another buffer full</li>
+<li>of bytes.<br><em>/<br>void<br>MD5Update(struct MD5Context </em>ctx, u_char const *buf, u_int len)<br>{<pre><code>register u_int32_t t;
+/* Update bitcount */
+t = ctx-&gt;bits[0];
+if ((ctx-&gt;bits[0] = t + ((u_int32_t) len &lt;&lt; 3)) &lt; t)
+        ctx-&gt;bits[1]++;        /* Carry from low to high */
+ctx-&gt;bits[1] += len &gt;&gt; 29;
+t = (t &gt;&gt; 3) &amp; 0x3f;        /* Bytes already in shsInfo-&gt;data */
+/* Handle any leading odd-sized chunks */
+if (t) {
+        u_char *p = (u_char *) ctx-&gt;in + t;
+        t = 64 - t;
+        if (len &lt; t) {
+                memmove(p, buf, len);
+                return;
+        }
+        memmove(p, buf, t);
+        byteReverse(ctx-&gt;in, 16);   //对字符串元素进行分组---4个一组，并进行移位或运算，生成新的数据（原本64个元素，生成16个）
+        MD5Transform(ctx-&gt;buf, (u_int32_t *) ctx-&gt;in);
+        buf += t;
+        len -= t;
+}
+/* Process data in 64-byte chunks */
+</code></pre></li>
+</ul>
+<pre><code>while (len &gt;= 64) {
+        memmove(ctx-&gt;in, buf, 64);
+        byteReverse(ctx-&gt;in, 16);
+        MD5Transform(ctx-&gt;buf, (u_int32_t *) ctx-&gt;in);
+        buf += 64;
+        len -= 64;
+}
+
+/* Handle any remaining bytes of data. */
+
+memmove(ctx-&gt;in, buf, len);
+</code></pre><p>}</p>
+<p>/*</p>
+<ul>
+<li>Final wrapup - pad to 64-byte boundary with the bit pattern </li>
+<li>1 0<em> (64-bit count of bits processed, MSB-first)
+</em>/<br>void<br>MD5Final(u_char digest[16], struct MD5Context *ctx)<br>{<pre><code>u_int count;
+u_char *p;
+/* Compute number of bytes mod 64 */
+count = (ctx-&gt;bits[0] &gt;&gt; 3) &amp; 0x3F;
+/* Set the first char of padding to 0x80.  This is safe since there is
+   always at least one byte free */
+p = ctx-&gt;in + count;
+*p++ = 0x80;
+/* Bytes of padding needed to make 64 bytes */
+count = 64 - 1 - count;
+/* Pad out to 56 mod 64 */
+if (count &lt; 8) {
+        /* Two lots of padding:  Pad the first block to 64 bytes */
+        memset(p, 0, count);
+        byteReverse(ctx-&gt;in, 16);
+        MD5Transform(ctx-&gt;buf, (u_int32_t *) ctx-&gt;in);
+        /* Now fill the next block with 56 bytes */
+        memset(ctx-&gt;in, 0, 56);
+} else {
+        /* Pad block to 56 bytes */
+        memset(p, 0, count - 8);
+}
+byteReverse(ctx-&gt;in, 14);
+/* Append length in bits and transform */
+((u_int32_t *) ctx-&gt;in)[14] = ctx-&gt;bits[0];
+((u_int32_t *) ctx-&gt;in)[15] = ctx-&gt;bits[1];
+MD5Transform(ctx-&gt;buf, (u_int32_t *) ctx-&gt;in);
+byteReverse((u_char *) ctx-&gt;buf, 4);
+memmove(digest, ctx-&gt;buf, 16);
+memset(ctx, 0, sizeof(struct MD5Context));        /* In case it&apos;s sensitive */
+</code></pre>}<br>(<code>`</code>)</li>
+</ul>
+<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)\<br>/*</p>
+<ul>
+<li>Note: this code is harmless on little-endian machines.<br><em>/<br>static void<br>byteReverse(u_char </em>buf, u_int longs)<br>{<pre><code>u_int32_t t;
+do {
+        t = (u_int32_t) ((u_int) buf[3] &lt;&lt; 8 | buf[2]) &lt;&lt; 16 |
+            ((u_int) buf[1] &lt;&lt; 8 | buf[0]);
+        *(u_int32_t *) buf = t;
+        buf += 4;
+} while (--longs);
+</code></pre>}<br>/<em> This is the central step in the MD5 algorithm. </em>/<br>#define MD5STEP(f, w, x, y, z, data, s) \<pre><code>( w += f(x, y, z) + data,  w = w&lt;&lt;s | w&gt;&gt;(32-s),  w += x )       
+</code></pre>/*</li>
+<li>The core of the MD5 algorithm, this alters an existing MD5 hash to</li>
+<li>reflect the addition of 16 longwords of new data.  MD5Update blocks</li>
+<li>the data and converts bytes into longwords for this routine.<br>*/<br>static void<br>MD5Transform(u_int32_t buf[4], u_int32_t const in[16])<br>{<pre><code>register u_int32_t a, b, c, d;
+a = buf[0];
+b = buf[1];
+c = buf[2];
+d = buf[3];
+MD5STEP(F1, a, b, c, d, in[0] + 0xd76aa478, 7);
+MD5STEP(F1, d, a, b, c, in[1] + 0xe8c7b756, 12);
+MD5STEP(F1, c, d, a, b, in[2] + 0x242070db, 17);
+MD5STEP(F1, b, c, d, a, in[3] + 0xc1bdceee, 22);
+MD5STEP(F1, a, b, c, d, in[4] + 0xf57c0faf, 7);
+MD5STEP(F1, d, a, b, c, in[5] + 0x4787c62a, 12);
+MD5STEP(F1, c, d, a, b, in[6] + 0xa8304613, 17);
+MD5STEP(F1, b, c, d, a, in[7] + 0xfd469501, 22);
+MD5STEP(F1, a, b, c, d, in[8] + 0x698098d8, 7);
+MD5STEP(F1, d, a, b, c, in[9] + 0x8b44f7af, 12);
+MD5STEP(F1, c, d, a, b, in[10] + 0xffff5bb1, 17);
+MD5STEP(F1, b, c, d, a, in[11] + 0x895cd7be, 22);
+MD5STEP(F1, a, b, c, d, in[12] + 0x6b901122, 7);
+MD5STEP(F1, d, a, b, c, in[13] + 0xfd987193, 12);
+MD5STEP(F1, c, d, a, b, in[14] + 0xa679438e, 17);
+MD5STEP(F1, b, c, d, a, in[15] + 0x49b40821, 22);
+MD5STEP(F2, a, b, c, d, in[1] + 0xf61e2562, 5);
+MD5STEP(F2, d, a, b, c, in[6] + 0xc040b340, 9);
+MD5STEP(F2, c, d, a, b, in[11] + 0x265e5a51, 14);
+MD5STEP(F2, b, c, d, a, in[0] + 0xe9b6c7aa, 20);
+MD5STEP(F2, a, b, c, d, in[5] + 0xd62f105d, 5);
+MD5STEP(F2, d, a, b, c, in[10] + 0x02441453, 9);
+MD5STEP(F2, c, d, a, b, in[15] + 0xd8a1e681, 14);
+MD5STEP(F2, b, c, d, a, in[4] + 0xe7d3fbc8, 20);
+MD5STEP(F2, a, b, c, d, in[9] + 0x21e1cde6, 5);
+MD5STEP(F2, d, a, b, c, in[14] + 0xc33707d6, 9);
+MD5STEP(F2, c, d, a, b, in[3] + 0xf4d50d87, 14);
+MD5STEP(F2, b, c, d, a, in[8] + 0x455a14ed, 20);
+MD5STEP(F2, a, b, c, d, in[13] + 0xa9e3e905, 5);
+MD5STEP(F2, d, a, b, c, in[2] + 0xfcefa3f8, 9);
+MD5STEP(F2, c, d, a, b, in[7] + 0x676f02d9, 14);
+MD5STEP(F2, b, c, d, a, in[12] + 0x8d2a4c8a, 20);
+MD5STEP(F3, a, b, c, d, in[5] + 0xfffa3942, 4);
+MD5STEP(F3, d, a, b, c, in[8] + 0x8771f681, 11);
+MD5STEP(F3, c, d, a, b, in[11] + 0x6d9d6122, 16);
+MD5STEP(F3, b, c, d, a, in[14] + 0xfde5380c, 23);
+MD5STEP(F3, a, b, c, d, in[1] + 0xa4beea44, 4);
+MD5STEP(F3, d, a, b, c, in[4] + 0x4bdecfa9, 11);
+MD5STEP(F3, c, d, a, b, in[7] + 0xf6bb4b60, 16);
+MD5STEP(F3, b, c, d, a, in[10] + 0xbebfbc70, 23);
+MD5STEP(F3, a, b, c, d, in[13] + 0x289b7ec6, 4);
+MD5STEP(F3, d, a, b, c, in[0] + 0xeaa127fa, 11);
+MD5STEP(F3, c, d, a, b, in[3] + 0xd4ef3085, 16);
+MD5STEP(F3, b, c, d, a, in[6] + 0x04881d05, 23);
+MD5STEP(F3, a, b, c, d, in[9] + 0xd9d4d039, 4);
+MD5STEP(F3, d, a, b, c, in[12] + 0xe6db99e5, 11);
+MD5STEP(F3, c, d, a, b, in[15] + 0x1fa27cf8, 16);
+MD5STEP(F3, b, c, d, a, in[2] + 0xc4ac5665, 23);
+MD5STEP(F4, a, b, c, d, in[0] + 0xf4292244, 6);
+MD5STEP(F4, d, a, b, c, in[7] + 0x432aff97, 10);
+MD5STEP(F4, c, d, a, b, in[14] + 0xab9423a7, 15);
+MD5STEP(F4, b, c, d, a, in[5] + 0xfc93a039, 21);
+MD5STEP(F4, a, b, c, d, in[12] + 0x655b59c3, 6);
+MD5STEP(F4, d, a, b, c, in[3] + 0x8f0ccc92, 10);
+MD5STEP(F4, c, d, a, b, in[10] + 0xffeff47d, 15);
+MD5STEP(F4, b, c, d, a, in[1] + 0x85845dd1, 21);
+MD5STEP(F4, a, b, c, d, in[8] + 0x6fa87e4f, 6);
+MD5STEP(F4, d, a, b, c, in[15] + 0xfe2ce6e0, 10);
+MD5STEP(F4, c, d, a, b, in[6] + 0xa3014314, 15);
+MD5STEP(F4, b, c, d, a, in[13] + 0x4e0811a1, 21);
+MD5STEP(F4, a, b, c, d, in[4] + 0xf7537e82, 6);
+MD5STEP(F4, d, a, b, c, in[11] + 0xbd3af235, 10);
+MD5STEP(F4, c, d, a, b, in[2] + 0x2ad7d2bb, 15);
+MD5STEP(F4, b, c, d, a, in[9] + 0xeb86d391, 21);
+buf[0] += a;
+buf[1] += b;
+buf[2] += c;
+buf[3] += d;
+</code></pre>}<br>/<em> Decodes input (unsigned char) into output (UINT4). Assumes len is<br>a multiple of 4. </em>/<br>/<em>与上面的函数正好相反，这一个把字符形式的缓冲区中的数据copy到4字节的整数中（即以整数形式保存）<br>output：保存转换出的整数<br>input：欲转换的字符缓冲区<br>len：输入的字符缓冲区的长度，要求是4的整数倍
+</em>/<br>static void Decode(UINT4 <em>output, unsigned char </em>input,unsigned int   len)<br>{<br>unsigned int i, j;<br>for(i = 0, j = 0; j &lt; len; i++, j += 4)<br>output[i] = ((UINT4)input[j]) | (((UINT4)input[j+1]) &lt;&lt; 8) |<br> (((UINT4)input[j+2]) &lt;&lt; 16) | (((UINT4)input[j+3]) &lt;&lt; 24);<br>}<br>(<code>`</code>)</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtejwqbc00041hfmhpy6ft3s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/17/5iomodel/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">常见五种IO模型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/03/18/MD5算法及token生成/">MD5算法及token生成</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/17/5iomodel/">常见五种IO模型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/09/shellscript/">shell启动脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/09/first/">博客push失败原因</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/25/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
