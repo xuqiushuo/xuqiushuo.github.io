@@ -7,17 +7,17 @@
   
   <title>MD5算法及token生成 | xuqiushuo&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+  <meta name="description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MD5算法及token生成">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/MD5算法及token生成/index.html">
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
-<meta property="og:description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+<meta property="og:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-18T16:13:28.589Z">
+<meta property="og:updated_time" content="2019-03-20T12:10:42.347Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MD5算法及token生成">
-<meta name="twitter:description" content="MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始">
+<meta name="twitter:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -86,9 +86,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。<br>　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的数学函数。<br>　　MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹)，以防止被“篡改”。举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。<br>　　MD5还广泛用于加密和解密技术上，在很多操作系统中，用户的密码是以MD5值（或类似的其它算法）的方式保存的，用户Login的时候，系统是把用户输入的密码计算成MD5值，然后再去和系统中保存的MD5值进行比较，而系统并不“知道”用户的密码是什么。<br>    当前我知道用到的有token的生成以及linuxshell串口加密都用了MD5算法。</p>
-<p>基于 Token 的身份验证方法<br>    1.使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的：<br>    2.客户端使用用户名跟密码请求登录<br>    3.服务端收到请求，去验证用户名与密码<br>    4.验证成功后，服务端会通过MD5计算签发一个 Token，再把这个 Token 发送给客户端<br>    5.客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>    6.客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>    7.服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</p>
-<p>1.获取页面传来的username及password，结合当前时间生成的tmp，将其拷贝给数据块md5inbuf，运用MD5加密算法进行计算<br>（<code>）
+        <p>一、MD5算法<br>1.1 MD5简介<br>MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。<br>　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的数学函数。<br>　　MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹)，以防止被“篡改”。举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。<br>MD5还广泛用于加密和解密技术上，在很多操作系统中，用户的密码是以MD5值（或类似的其它算法）的方式保存的.MD5算法本身是哈希算法。</p>
+<p>1.2  算法原理<br>MD5算法对输入任意长度的消息进行运行，产生一个128位的消息摘要。<br>a、数据填充<br>对消息进行数据填充，使消息的长度对512取模得448，设消息长度为X，即满足X/512=448。根据此公式得出需要填充的数据长度。<br>填充方法：在消息后面进行填充，填充第一位为1，其余为0。<br>b、添加消息长度<br>在第一步结果之后再填充上原消息的长度，可用来进行的存储长度为64位。如果消息长度大于264，则只使用其低64位的值，即（消息长度 对 264取模）。<br>在此步骤进行完毕后，最终消息长度就是512的整数倍。<br>c、数据处理<br>准备需要用到的数据：<br>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;<br>4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));<br>把消息分以512位为一分组进行处理，每一个分组进行4轮变换，以上面所说4个常数为起始变量进行计算，重新输出4个变量，以这4个变量再进行下一分组的运算，如果已经是最后一个分组，则这4个变量为最后的结果，即MD5值</p>
+<p>二、基于 Token 的身份验证方法及token的生成<br>2.1<br>使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的：<br>客户端使用用户名跟密码请求登录<br>b.      服务端收到请求，去验证用户名与密码<br>c.      验证成功后，服务端会通过MD5计算签发一个 Token，再把这个 Token 发送给客户端<br>d.      客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>e.      客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>f.       服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</p>
+<p>2.2 token生成<br>1.获取web传来的username及password，结合当前时间，将其拷贝给数据块md5inbuf，运用MD5加密算法进行计算</p>
+<p>（<code>）
 static void createToken(char *userName, char* password, char* out, UINT8 len)
 {   
     char md5inbuf[612];
