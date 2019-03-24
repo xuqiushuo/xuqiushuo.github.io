@@ -7,17 +7,17 @@
   
   <title>MD5算法及token生成 | xuqiushuo&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
+  <meta name="description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，其本质是哈希算法，经MD2、MD3和MD4发展而来。 MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MD5算法及token生成">
 <meta property="og:url" content="http://yoursite.com/2019/03/18/MD5算法及token生成/index.html">
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
-<meta property="og:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
+<meta property="og:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，其本质是哈希算法，经MD2、MD3和MD4发展而来。 MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-24T13:08:14.248Z">
+<meta property="og:updated_time" content="2019-03-24T13:18:32.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MD5算法及token生成">
-<meta name="twitter:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
+<meta name="twitter:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，其本质是哈希算法，经MD2、MD3和MD4发展而来。 MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -86,12 +86,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、MD5算法<br>1.1 MD5简介<br>MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。<br>　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的数学函数。<br>　　MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹)，以防止被“篡改”。举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。<br>MD5还广泛用于加密和解密技术上，在很多操作系统中，用户的密码是以MD5值（或类似的其它算法）的方式保存的.MD5算法本身是哈希算法。</p>
-<p>1.2  算法原理<br>MD5算法对输入任意长度的消息进行运行，产生一个128位的消息摘要。<br>a、数据填充<br>对消息进行数据填充，使消息的长度对512取模得448，设消息长度为X，即满足X/512=448。根据此公式得出需要填充的数据长度。<br>填充方法：在消息后面进行填充，填充第一位为1，其余为0。<br>b、添加消息长度<br>在第一步结果之后再填充上原消息的长度，可用来进行的存储长度为64位。如果消息长度大于264，则只使用其低64位的值，即（消息长度 对 264取模）。<br>在此步骤进行完毕后，最终消息长度就是512的整数倍。<br>c、数据处理<br>准备需要用到的数据：<br>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;<br>4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));<br>把消息分以512位为一分组进行处理，每一个分组进行4轮变换，以上面所说4个常数为起始变量进行计算，重新输出4个变量，以这4个变量再进行下一分组的运算，如果已经是最后一个分组，则这4个变量为最后的结果，即MD5值</p>
-<p>二、基于 Token 的身份验证方法及token的生成<br>2.1<br>使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的：<br>客户端使用用户名跟密码请求登录<br>b.      服务端收到请求，去验证用户名与密码<br>c.      验证成功后，服务端会通过MD5计算签发一个 Token，再把这个 Token 发送给客户端<br>d.      客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>e.      客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>f.       服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</p>
-<p>2.2 token生成<br>1.获取web传来的username及password，结合当前时间，将其拷贝给数据块md5inbuf，运用MD5加密算法进行计算</p>
-<p>（<code>）
-static void createToken(char *userName, char* password, char* out, UINT8 len)
+        <h3 id="一、MD5算法"><a href="#一、MD5算法" class="headerlink" title="一、MD5算法"></a>一、MD5算法</h3><h4 id="1-1-MD5简介"><a href="#1-1-MD5简介" class="headerlink" title="1.1 MD5简介"></a>1.1 MD5简介</h4><pre><code>MD5的全称是Message-Digest Algorithm 5，其本质是哈希算法，经MD2、MD3和MD4发展而来。
+MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使看到源程序和算法描述，也无法将一个MD5的值变换回原始的字符串，从数学原理上说，是因为原始的字符串有无穷多个，这有点象不存在反函数的数学函数。
+</code></pre><p>　　MD5的典型应用是对一段Message(字节串)产生fingerprint(指纹)，以防止被“篡改”。举个例子，你将一段话写在一个叫 readme.txt文件中，并对这个readme.txt产生一个MD5的值并记录在案，然后你可以传播这个文件给别人，别人如果修改了文件中的任何内容，你对这个文件重新计算MD5时就会发现。如果再有一个第三方的认证机构，用MD5还可以防止文件作者的“抵赖”，这就是所谓的数字签名应用。<br>    MD5还广泛用于加密和解密技术上，在很多操作系统中，用户的密码是以MD5值（或类似的其它算法）的方式保存的。</p>
+<h4 id="1-2-算法原理"><a href="#1-2-算法原理" class="headerlink" title="1.2  算法原理"></a>1.2  算法原理</h4><p>MD5算法对输入任意长度的消息进行运行，产生一个128位的消息摘要。<br>a、数据填充<br>对消息进行数据填充，使消息的长度对512取模得448，设消息长度为X，即满足X/512=448。根据此公式得出需要填充的数据长度。<br>填充方法：在消息后面进行填充，填充第一位为1，其余为0。<br>b、添加消息长度<br>在第一步结果之后再填充上原消息的长度，可用来进行的存储长度为64位。如果消息长度大于264，则只使用其低64位的值，即（消息长度 对 264取模）。<br>在此步骤进行完毕后，最终消息长度就是512的整数倍。<br>c、数据处理<br>准备需要用到的数据：<br>4个常数： A = 0x67452301, B = 0x0EFCDAB89, C = 0x98BADCFE, D = 0x10325476;<br>4个函数：F(X,Y,Z)=(X &amp; Y) | ((~X) &amp; Z); G(X,Y,Z)=(X &amp; Z) | (Y &amp; (~Z));  H(X,Y,Z)=X ^ Y ^ Z; I(X,Y,Z)=Y ^ (X | (~Z));<br>把消息分以512位为一分组进行处理，每一个分组进行4轮变换，以上面所说4个常数为起始变量进行计算，重新输出4个变量，以这4个变量再进行下一分组的运算，如果已经是最后一个分组，则这4个变量为最后的结果，即MD5值</p>
+<h3 id="二、基于-Token-的身份验证方法及token的生成"><a href="#二、基于-Token-的身份验证方法及token的生成" class="headerlink" title="二、基于 Token 的身份验证方法及token的生成"></a>二、基于 Token 的身份验证方法及token的生成</h3><h4 id="2-1"><a href="#2-1" class="headerlink" title="2.1"></a>2.1</h4><p>使用基于 Token 的身份验证方法，在服务端不需要存储用户的登录记录。大概的流程是这样的：<br>a.      客户端使用用户名跟密码请求登录<br>b.      服务端收到请求，去验证用户名与密码<br>c.      验证成功后，服务端会通过MD5计算签发一个 Token，再把这个 Token 发送给客户端<br>d.      客户端收到 Token 以后可以把它存储起来，比如放在 Cookie 里或者 Local Storage 里<br>e.      客户端每次向服务端请求资源的时候需要带着服务端签发的 Token<br>f.       服务端收到请求，然后去验证客户端请求里面带着的 Token，如果验证成功，就向客户端返回请求的数据</p>
+<h4 id="2-2-token生成"><a href="#2-2-token生成" class="headerlink" title="2.2 token生成"></a>2.2 token生成</h4><p>1.获取web传来的username及password，结合当前时间，将其拷贝给数据块md5inbuf，运用MD5加密算法进行计算<br>（<code>） static void createToken(char *userName, char* password, char* out, UINT8 len)
 {   
     char md5inbuf[612];
     unsigned char md5Value_TB[MD5_DIGEST_LEN] = {0};   //存放加密信息
@@ -105,9 +105,8 @@ static void createToken(char *userName, char* password, char* out, UINT8 len)
     MD5_encrypt(md5Value_TB, (unsigned char*)md5inbuf);
     hex2ascii(md5Value_TB, MD5_DIGEST_LEN, tmpOutBuf);
     UTIL_STRNCPY(out, tmpOutBuf, len);
-}
-（</code>）</p>
-<p>2.运用结构体MD5Context，初始化（数据自定义），将传入的数据更新进去（计算加密），最终生成结果<br>(<code>`</code>)<br>typedef struct MD5Context {<br>  u_int32_t buf[4];<br>  u_int32_t bits[2];<br>  u_char in[64];<br>} MD5Context;<br>void MD5_encrypt(unsigned char <em>out, const unsigned char </em>in)<br>{<br>    MD5Context ctx;<br>    MD5Init( &amp;ctx );   //初始化<br>    MD5Update(&amp;ctx, in, strlen((char<em>)in));  //对欲加密的字符进行加密<br>    MD5Final(out, &amp;ctx);   //获得最终结果<br>}<br>void MD5Init(struct MD5Context </em>ctx)<br>{<br>        ctx-&gt;buf[0] = 0x67452301;<br>        ctx-&gt;buf[1] = 0xefcdab89;<br>        ctx-&gt;buf[2] = 0x98badcfe;<br>        ctx-&gt;buf[3] = 0x10325476;<br>        ctx-&gt;bits[0] = 0;<br>        ctx-&gt;bits[1] = 0;<br>}<br>/*</p>
+} （</code>）</p>
+<p>2.运用结构体MD5Context，初始化（数据自定义），将传入的数据更新进去（计算加密），最终生成结果<br>(<code>`</code>) typedef struct MD5Context {<br>  u_int32_t buf[4];<br>  u_int32_t bits[2];<br>  u_char in[64];<br>} MD5Context;<br>void MD5_encrypt(unsigned char <em>out, const unsigned char </em>in)<br>{<br>    MD5Context ctx;<br>    MD5Init( &amp;ctx );   //初始化<br>    MD5Update(&amp;ctx, in, strlen((char<em>)in));  //对欲加密的字符进行加密<br>    MD5Final(out, &amp;ctx);   //获得最终结果<br>}<br>void MD5Init(struct MD5Context </em>ctx)<br>{<br>        ctx-&gt;buf[0] = 0x67452301;<br>        ctx-&gt;buf[1] = 0xefcdab89;<br>        ctx-&gt;buf[2] = 0x98badcfe;<br>        ctx-&gt;buf[3] = 0x10325476;<br>        ctx-&gt;bits[0] = 0;<br>        ctx-&gt;bits[1] = 0;<br>}<br>/*</p>
 <ul>
 <li>Update context to reflect the concatenation of another buffer full</li>
 <li>of bytes.<br><em>/<br>void<br>MD5Update(struct MD5Context </em>ctx, u_char const *buf, u_int len)<br>{<pre><code>register u_int32_t t;
@@ -180,9 +179,9 @@ MD5Transform(ctx-&gt;buf, (u_int32_t *) ctx-&gt;in);
 byteReverse((u_char *) ctx-&gt;buf, 4);
 memmove(digest, ctx-&gt;buf, 16);
 memset(ctx, 0, sizeof(struct MD5Context));        /* In case it&apos;s sensitive */
-</code></pre>}<br>(<code>`</code>)</li>
+</code></pre>} (<code>`</code>)</li>
 </ul>
-<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)<br>/*</p>
+<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>) /*</p>
 <ul>
 <li>Note: this code is harmless on little-endian machines.<br><em>/<br>static void<br>byteReverse(u_char </em>buf, u_int longs)<br>{<pre><code>u_int32_t t;
 do {
@@ -269,13 +268,13 @@ buf[1] += b;
 buf[2] += c;
 buf[3] += d;
 </code></pre>}<br>/<em> Decodes input (unsigned char) into output (UINT4). Assumes len is<br>a multiple of 4. </em>/<br>/<em>与上面的函数正好相反，这一个把字符形式的缓冲区中的数据copy到4字节的整数中（即以整数形式保存）<br>output：保存转换出的整数<br>input：欲转换的字符缓冲区<br>len：输入的字符缓冲区的长度，要求是4的整数倍
-</em>/<br>static void Decode(UINT4 <em>output, unsigned char </em>input,unsigned int   len)<br>{<br>unsigned int i, j;<br>for(i = 0, j = 0; j &lt; len; i++, j += 4)<br>output[i] = ((UINT4)input[j]) | (((UINT4)input[j+1]) &lt;&lt; 8) |<br> (((UINT4)input[j+2]) &lt;&lt; 16) | (((UINT4)input[j+3]) &lt;&lt; 24);<br>}<br>(<code>`</code>)</li>
+</em>/<br>static void Decode(UINT4 <em>output, unsigned char </em>input,unsigned int   len)<br>{<br>unsigned int i, j;<br>for(i = 0, j = 0; j &lt; len; i++, j += 4)<br>output[i] = ((UINT4)input[j]) | (((UINT4)input[j+1]) &lt;&lt; 8) |<br> (((UINT4)input[j+2]) &lt;&lt; 16) | (((UINT4)input[j+3]) &lt;&lt; 24);<br>} (<code>`</code>)</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtmxv88a0005267rxrsc9h4d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtmy7lrf00052i7rryjvwr2w" class="article-share-link">Share</a>
       
       
     </footer>

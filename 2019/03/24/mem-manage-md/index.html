@@ -7,17 +7,17 @@
   
   <title>关于内存管理 | xuqiushuo&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，">
+  <meta name="description" content="前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，故函">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于内存管理">
 <meta property="og:url" content="http://yoursite.com/2019/03/24/mem-manage-md/index.html">
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
-<meta property="og:description" content="##前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，">
+<meta property="og:description" content="前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，故函">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-24T13:09:02.359Z">
+<meta property="og:updated_time" content="2019-03-24T13:12:01.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于内存管理">
-<meta name="twitter:description" content="##前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，">
+<meta name="twitter:description" content="前言：计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区： 代码区　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，故函">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##前言：<br>计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区：</p>
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区：</p>
 <h3 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h3><p>　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，故函数都被放在代码区，包括main函数。<br>　　注意：”int a = 0;”语句可拆分成”int a;”和”a = 0”，定义变量a的”int a;”语句并不是代码，它在程序编译时就执行了，并没有放到代码区，放到代码区的只有”a = 0”这句。</p>
 <h3 id="静态区"><a href="#静态区" class="headerlink" title="静态区"></a>静态区</h3><p>　　静态区存放程序中所有的全局变量和静态变量。</p>
 <h3 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h3><p>　　栈（stack）是一种先进后出的内存结构，所有的自动变量、函数形参都存储在栈中，这个动作由编译器自动完成，我们不需要考虑。栈区在程序运行期间是可以随时修改的。当一个自动变量超出其作用域时，自动从栈中弹出。栈有以下特点：<br>每个线程都有自己专属的栈；<br>栈的最大尺寸固定，超出则引起栈溢出；<br>变量离开作用域后栈上的内存会自动释放。</p>
@@ -95,7 +95,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/mem-manage-md/" data-id="cjtmxv8820003267r4fthpkve" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/mem-manage-md/" data-id="cjtmy7lr500032i7rp99wqn8z" class="article-share-link">Share</a>
       
       
     </footer>
