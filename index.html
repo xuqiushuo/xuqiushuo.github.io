@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mem-manage-md" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/24/mem-manage-md/" class="article-date">
+  <time datetime="2019-03-24T13:01:58.000Z" itemprop="datePublished">2019-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/24/mem-manage-md/">mem_manage.md</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##前言：<br>计算机中的内存是分区来管理的，程序和程序之间的内存是独立的，不能互相访问，而每个程序的内存也是分区管理的，一个应用程序所占的内存可以分为很多个区域，通常叫内存四区：</p>
+<h3 id="代码区"><a href="#代码区" class="headerlink" title="代码区"></a>代码区</h3><p>　　程序被操作系统加载到内存的时候，所有的可执行代码（程序代码指令、常量字符串等）都加载到代码区，这块内存在程序运行期间是不变的。代码区是平行的，里面装的就是一堆指令，在程序运行期间是不能改变的。函数也是代码的一部分，故函数都被放在代码区，包括main函数。<br>　　注意：”int a = 0;”语句可拆分成”int a;”和”a = 0”，定义变量a的”int a;”语句并不是代码，它在程序编译时就执行了，并没有放到代码区，放到代码区的只有”a = 0”这句。</p>
+<h3 id="静态区"><a href="#静态区" class="headerlink" title="静态区"></a>静态区</h3><p>　　静态区存放程序中所有的全局变量和静态变量。</p>
+<h3 id="栈区"><a href="#栈区" class="headerlink" title="栈区"></a>栈区</h3><p>　　栈（stack）是一种先进后出的内存结构，所有的自动变量、函数形参都存储在栈中，这个动作由编译器自动完成，我们不需要考虑。栈区在程序运行期间是可以随时修改的。当一个自动变量超出其作用域时，自动从栈中弹出。栈有以下特点：<br>每个线程都有自己专属的栈；<br>栈的最大尺寸固定，超出则引起栈溢出；<br>变量离开作用域后栈上的内存会自动释放。</p>
+<h3 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h3><p>　　堆（heap）和栈一样，也是一种在程序运行过程中可以随时修改的内存区域，但没有栈那样先进后出的顺序。更重要的是堆是一个大容器，它的容量要远远大于栈。一般比较复杂的数据类型都是放在堆中。但是在C语言中，堆内存空间的申请和释放需要手动通过代码来完成。对于一个32位操作系统，最大管理管理4G内存，其中1G是给操作系统自己用的，剩下的3G都是给用户程序，一个用户程序理论上可以使用3G的内存空间。堆上的内存必须手动释放（C/C++），除非语言执行环境支持GC（如C#在.NET上运行就有垃圾回收机制，jvm也有垃圾回收机制）。<br>　　堆内存的分配和释放：malloc与free<br>　　malloc函数用来在堆中分配指定大小的内存，单位为字节（Byte），函数返回void * 指针；free负责在堆中释放malloc分配的内存。malloc与free一定成对使用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/24/mem-manage-md/" data-id="cjtmxufi400021o7rszyt9ixq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MD5算法及token生成" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/18/MD5算法及token生成/" class="article-date">
@@ -146,7 +187,7 @@ memmove(ctx-&gt;in, buf, len);
 </code></pre><p>}</p>
 <p>/*</p>
 <ul>
-<li>Final wrapup - pad to 64-byte boundary with the bit pattern </li>
+<li>Final wrapup - pad to 64-byte boundary with the bit pattern</li>
 <li>1 0<em> (64-bit count of bits processed, MSB-first)
 </em>/<br>void<br>MD5Final(u_char digest[16], struct MD5Context *ctx)<br>{<pre><code>u_int count;
 u_char *p;
@@ -180,7 +221,7 @@ memmove(digest, ctx-&gt;buf, 16);
 memset(ctx, 0, sizeof(struct MD5Context));        /* In case it&apos;s sensitive */
 </code></pre>}<br>(<code>`</code>)</li>
 </ul>
-<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)\<br>/*</p>
+<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)<br>/*</p>
 <ul>
 <li>Note: this code is harmless on little-endian machines.<br><em>/<br>static void<br>byteReverse(u_char </em>buf, u_int longs)<br>{<pre><code>u_int32_t t;
 do {
@@ -273,7 +314,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtejwqbc00041hfmhpy6ft3s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtmxufig00051o7ryd5ovqq4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -322,7 +363,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/17/5iomodel/" data-id="cjtejwqaw00001hfmvug8nxl3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/17/5iomodel/" data-id="cjtmxufi600041o7r2eb8mz5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +421,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjtejwqb500031hfm45jkcx4d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjtmxufi500031o7r13ciulmw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +466,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/first/" data-id="cjtejwqb100011hfmhsj0zajm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/first/" data-id="cjtmxufhv00001o7revh9ozqj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +511,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjtejwqb300021hfm4m70ggpq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjtmxufi200011o7rpn95rh68" class="article-share-link">Share</a>
       
       
     </footer>
@@ -511,6 +552,10 @@ buf[3] += d;
       <ul>
         
           <li>
+            <a href="/2019/03/24/mem-manage-md/">mem_manage.md</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/18/MD5算法及token生成/">MD5算法及token生成</a>
           </li>
         
@@ -524,10 +569,6 @@ buf[3] += d;
         
           <li>
             <a href="/2018/12/09/first/">博客push失败原因</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/25/hello-world/">Hello World</a>
           </li>
         
       </ul>

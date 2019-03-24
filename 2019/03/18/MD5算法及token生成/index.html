@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
 <meta property="og:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-20T12:10:42.347Z">
+<meta property="og:updated_time" content="2019-03-24T13:08:14.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MD5算法及token生成">
 <meta name="twitter:description" content="一、MD5算法1.1 MD5简介MD5的全称是Message-Digest Algorithm 5，在90年代初由MIT的计算机科学实验室和RSA Data Security Inc发明，经MD2、MD3和MD4发展而来。　　MD5将任意长度的“字节串”变换成一个128bit的大整数，并且它是一个不可逆的字符串变换算法，换句话说就是，即使你看到源程序和算法描述，也无法将一个MD5的值变换回原始的字">
@@ -148,7 +148,7 @@ memmove(ctx-&gt;in, buf, len);
 </code></pre><p>}</p>
 <p>/*</p>
 <ul>
-<li>Final wrapup - pad to 64-byte boundary with the bit pattern </li>
+<li>Final wrapup - pad to 64-byte boundary with the bit pattern</li>
 <li>1 0<em> (64-bit count of bits processed, MSB-first)
 </em>/<br>void<br>MD5Final(u_char digest[16], struct MD5Context *ctx)<br>{<pre><code>u_int count;
 u_char *p;
@@ -182,7 +182,7 @@ memmove(digest, ctx-&gt;buf, 16);
 memset(ctx, 0, sizeof(struct MD5Context));        /* In case it&apos;s sensitive */
 </code></pre>}<br>(<code>`</code>)</li>
 </ul>
-<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)\<br>/*</p>
+<p>3.算法主要构成函数：byteReverse及MD5Transform，我在网上查了一下，byteReverse函数与Decode函数一样<br>(<code>`</code>)<br>/*</p>
 <ul>
 <li>Note: this code is harmless on little-endian machines.<br><em>/<br>static void<br>byteReverse(u_char </em>buf, u_int longs)<br>{<pre><code>u_int32_t t;
 do {
@@ -275,7 +275,7 @@ buf[3] += d;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtejwqbc00041hfmhpy6ft3s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjtmxufig00051o7ryd5ovqq4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,6 +283,15 @@ buf[3] += d;
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/03/24/mem-manage-md/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mem_manage.md
+        
+      </div>
+    </a>
   
   
     <a href="/2019/03/17/5iomodel/" id="article-nav-older" class="article-nav-link-wrap">
@@ -324,6 +333,10 @@ buf[3] += d;
       <ul>
         
           <li>
+            <a href="/2019/03/24/mem-manage-md/">mem_manage.md</a>
+          </li>
+        
+          <li>
             <a href="/2019/03/18/MD5算法及token生成/">MD5算法及token生成</a>
           </li>
         
@@ -337,10 +350,6 @@ buf[3] += d;
         
           <li>
             <a href="/2018/12/09/first/">博客push失败原因</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/25/hello-world/">Hello World</a>
           </li>
         
       </ul>
