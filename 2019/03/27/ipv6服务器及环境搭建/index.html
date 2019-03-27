@@ -14,19 +14,20 @@
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
 <meta property="og:description" content="去年给客户验证ipv6测试项的时候搭建的环境，当时写了篇文档，最近又要用到，在这里记一下 ##准备环境：如果安装的是虚拟机，需要开启桥接模式（最好直接装双系统）1、VMware下载并安装，下载地址：官网2、Ubuntu下载地址：http://mirrors.163.com/，选择合适的版本拓扑： ##1.搭建服务器1.1 ubantu安装成功后，先安装dhcpv6服务器sudo apt-get i">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1579078292.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1309161180.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1309161180.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1771150074.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1405949446.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1843815554.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1893563068.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-2130119958.png">
-<meta property="og:updated_time" content="2019-03-27T16:22:41.952Z">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1579078292.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1309161180.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1309161180.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1771150074.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1405949446.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1843815554.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1893563068.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-2130119958.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-174703887.png">
+<meta property="og:updated_time" content="2019-03-27T16:25:01.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ipv6服务器及环境搭建">
 <meta name="twitter:description" content="去年给客户验证ipv6测试项的时候搭建的环境，当时写了篇文档，最近又要用到，在这里记一下 ##准备环境：如果安装的是虚拟机，需要开启桥接模式（最好直接装双系统）1、VMware下载并安装，下载地址：官网2、Ubuntu下载地址：http://mirrors.163.com/，选择合适的版本拓扑： ##1.搭建服务器1.1 ubantu安装成功后，先安装dhcpv6服务器sudo apt-get i">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/Pictures/1544866-20190327130301509-1579078292.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/xqs/Pictures/1544866-20190327130301509-1579078292.png">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -96,22 +97,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>去年给客户验证ipv6测试项的时候搭建的环境，当时写了篇文档，最近又要用到，在这里记一下</p>
-<p>##准备环境：<br>如果安装的是虚拟机，需要开启桥接模式（最好直接装双系统）<br>1、VMware下载并安装，下载地址：官网<br>2、Ubuntu下载地址：<a href="http://mirrors.163.com/，选择合适的版本" target="_blank" rel="noopener">http://mirrors.163.com/，选择合适的版本</a><br><img src="Pictures/1544866-20190327130301509-1579078292.png" alt=""><br>拓扑：<br><img src="Pictures/1544866-20190327130301509-1309161180.png" alt=""></p>
-<p>##1.搭建服务器<br>1.1 ubantu安装成功后，先安装dhcpv6服务器<br>sudo apt-get install dibbler-server<br><img src="Pictures/1544866-20190327130301509-1309161180.png" alt=""></p>
+<p>##准备环境：<br>如果安装的是虚拟机，需要开启桥接模式（最好直接装双系统）<br>1、VMware下载并安装，下载地址：官网<br>2、Ubuntu下载地址：<a href="http://mirrors.163.com/，选择合适的版本" target="_blank" rel="noopener">http://mirrors.163.com/，选择合适的版本</a><br><img src="xqs/Pictures/1544866-20190327130301509-1579078292.png" alt=""><br>拓扑：<br><img src="xqs/Pictures/1544866-20190327130301509-1309161180.png" alt=""></p>
+<p>##1.搭建服务器<br>1.1 ubantu安装成功后，先安装dhcpv6服务器<br>sudo apt-get install dibbler-server<br><img src="xqs/Pictures/1544866-20190327130301509-1309161180.png" alt=""></p>
 <p>1.2 修改接口<br>vi /etc/dibbler/server.conf 将接口名换为正确的接口</p>
 <p>1.3  安装vlan模块并添加VLAN</p>
-<p>sudo apt-get install vlan<br><img src="Pictures/1544866-20190327130301509-1771150074.png" alt=""><br>sudo vconfig add ens33 3712<br><img src="Pictures/1544866-20190327130301509-1405949446.png" alt=""><br>1.4 保证onu可ping通服务器enp19s0.3712接口<br>可用tcpdump -i enp19s0.3712查看报文交互</p>
-<p>1.5启动dhcp服务器<br>sudo dibbler-server run<br><img src="Pictures/1544866-20190327130301509-1843815554.png" alt=""></p>
+<p>sudo apt-get install vlan<br><img src="xqs/Pictures/1544866-20190327130301509-1771150074.png" alt=""><br>sudo vconfig add ens33 3712<br><img src="xqs/Pictures/1544866-20190327130301509-1405949446.png" alt=""><br>1.4 保证onu可ping通服务器enp19s0.3712接口<br>可用tcpdump -i enp19s0.3712查看报文交互</p>
+<p>1.5启动dhcp服务器<br>sudo dibbler-server run<br><img src="xqs/Pictures/1544866-20190327130301509-1843815554.png" alt=""></p>
 <p>然后便可以建立VLAN 3712的ipv6 wan连接</p>
 <p>遇到的问题：<br>虚拟机下的ubantu系统必须开启桥接模式，开启方式：<a href="https://blog.csdn.net/czg13548930186/article/details/77099074" target="_blank" rel="noopener">https://blog.csdn.net/czg13548930186/article/details/77099074</a><br>但是因为这台笔记本之前同事老王装过虚拟机，有配置遗留，解决方<br>法：<a href="https://blog.csdn.net/czg13548930186/article/details/77099377也就是重装虚拟机。" target="_blank" rel="noopener">https://blog.csdn.net/czg13548930186/article/details/77099377也就是重装虚拟机。</a><br>建议直接装双系统！</p>
 <p>##2.ipv6地址分配简介<br>2.1 状态化自动配置Stateful Configuration<br>主机通过配置协议（如DHCPv6）获取IPv6地址以及其他信息（DNS、域名等）。状态化自动配置相比与手工配置工作效<br>率要高得多，而相比与无状态自动配置来说更加可控，能够更加清晰的了解到主机及地址分配的相关信息。短板是需要<br>额外部署应用服务器，如DHCPv6 Server。<br>2.2 无状态自动配置 Stateless Configuration<br>相比于前者，无状态地址自动配置则显得更加的便捷，IPv6终端使用无状态自动配置能够做到即插即用。无需部署额外的<br>应用服务器、无需使用DHCPv6，在IPv6路由器与IPv6主机之间，利用ICMPv6协议中的路由器请求消息Router Solicitation和<br>路由器通告Router Advertisement消息来完成无状态自动配置过程。主机通过RS消息发现链路上的IPv6路由器，而IPv6路由<br>器通过RA消息向主机通告IPv6地址前缀信息，主机在收到IPv6前缀信息后，与自己的网卡接口ID一起构成128bits的单播<br>IPv6地址。</p>
 <p>2.3M和O标志<br>M=0，O=0 应用于没有DHCPv6服务器的环境。主机使用RA消息中的前缀构造IPv6单播地址，同时使用其他方法（非<br>DHCPv6），例如手工配置的方法设置其他配置信息（DNS等）。<br>M=1，O=1 主机使用DHCPv6来配置IPv6单播地址以及其他配置信息（DNS等）。这种应用也称为DHCPv6 Stateful。<br>M=0，O=1 主机使用RA消息获得的IPv6前缀构造IPv6地址，同时使用DHCPv6来获取除了地址之外的其他配置信息。这</p>
-<p>种应用也被称为DHCPv6 stateless。<br>M=1，O=0 主机仅仅使用DHCPv6来获取IPv6地址，至于其他配置信息则并不通过DHCPv6获得，这种组合不建议使用。<br>标志可通过抓取RA报文查看分析<br><img src="Pictures/1544866-20190327130301509-1893563068.png" alt=""><br>前缀长度prefix、validtime、preferedtime等参数可通过/etc/dibbler/server.config配置文件进行修改，且都可通过抓取报文分析<br><img src="Pictures/1544866-20190327130301509-2130119958.png" alt=""><br>![](Pictures/1544866-20190327130301509-174703887.png</p>
+<p>种应用也被称为DHCPv6 stateless。<br>M=1，O=0 主机仅仅使用DHCPv6来获取IPv6地址，至于其他配置信息则并不通过DHCPv6获得，这种组合不建议使用。<br>标志可通过抓取RA报文查看分析<br><img src="xqs/Pictures/1544866-20190327130301509-1893563068.png" alt=""><br>前缀长度prefix、validtime、preferedtime等参数可通过/etc/dibbler/server.config配置文件进行修改，且都可通过抓取报文分析<br><img src="xqs/Pictures/1544866-20190327130301509-2130119958.png" alt=""><br><img src="xqs/Pictures/1544866-20190327130301509-174703887.png" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/" data-id="cjtrf4x460003rjfm1sbonn90" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/" data-id="cjtrf6w7t0003rrfmwoqa9twd" class="article-share-link">Share</a>
       
       
     </footer>
