@@ -7,17 +7,17 @@
   
   <title>jQuery升级问题汇总 | xuqiushuo&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景：海外运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险，jquery版本需要从当前的1.8.2更新到3.3.1。 查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/ 3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate()、.undelegate()、jq">
+  <meta name="description" content="背景：运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险(asv scan扫描报告结果)，jquery版本需要从当前的1.8.2更新到3.0+（3.3.1）。查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery升级问题汇总">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/jQuery升级问题汇总/index.html">
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
-<meta property="og:description" content="背景：海外运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险，jquery版本需要从当前的1.8.2更新到3.3.1。 查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/ 3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate()、.undelegate()、jq">
+<meta property="og:description" content="背景：运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险(asv scan扫描报告结果)，jquery版本需要从当前的1.8.2更新到3.0+（3.3.1）。查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-03T15:29:04.758Z">
+<meta property="og:updated_time" content="2019-04-09T13:04:34.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery升级问题汇总">
-<meta name="twitter:description" content="背景：海外运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险，jquery版本需要从当前的1.8.2更新到3.3.1。 查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/ 3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate()、.undelegate()、jq">
+<meta name="twitter:description" content="背景：运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险(asv scan扫描报告结果)，jquery版本需要从当前的1.8.2更新到3.0+（3.3.1）。查询了官方文档，https://www.jquery123.com/category/deprecated/deprecated-3.0/3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate(">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -86,25 +86,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>海外运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险，jquery版本需要从当前的1.8.2更新到3.3.1。</p>
-<p>查询了官方文档，<a href="https://www.jquery123.com/category/deprecated/deprecated-3.0/" target="_blank" rel="noopener">https://www.jquery123.com/category/deprecated/deprecated-3.0/</a></p>
-<p>3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate()、.undelegate()、jquery.fx.interval</p>
-<p>1.9和1.10版本弃用的API有jquery.support()、.context()</p>
-<h3 id="详细问题："><a href="#详细问题：" class="headerlink" title="详细问题："></a>详细问题：</h3><h4 id="1、attr和prop"><a href="#1、attr和prop" class="headerlink" title="1、attr和prop"></a>1、attr和prop</h4><p>attr：获取匹配的元素集合中的第一个元素的属性的值  或 设置每一个匹配元素的一个或多个属性。<br>prop：获取匹配的元素集中第一个元素的属性（property）值或设置每一个匹配元素的一个或多个属性。</p>
-<p>attr是1.0之后使用的，prop是1.6以后使用的，用法不同，需注意。</p>
-<p>在jQuery 1.6中,当属性没有被设置时候，.attr()方法将返回undefined。 若要检索和更改DOM属性,比如元素的checked, selected, 或 disabled状态，使用.prop()方法。</p>
-<p>版本升级最大改动就在这里，之前的代码大量使用attr，没办法。。。</p>
-<h4 id="2、报错：Uncaught-TypeError-url-indexOf-is-not-a-function"><a href="#2、报错：Uncaught-TypeError-url-indexOf-is-not-a-function" class="headerlink" title="2、报错：Uncaught TypeError: url.indexOf is not a function"></a>2、报错：Uncaught TypeError: url.indexOf is not a function</h4><p>这个错误是由于调用了load函数导致的错误<br>把代码里调用load函数的方式<br>//old<br>$(window).load(function() { … });<br>//new<br>$(window).on(‘load’, function() { … });</p>
+        <h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><p>运营商需求，认为3.0之前的版本存在XSS（跨站脚本攻击）风险(asv scan扫描报告结果)，jquery版本需要从当前的1.8.2更新到3.0+（3.3.1）。<br>查询了官方文档，<a href="https://www.jquery123.com/category/deprecated/deprecated-3.0/" target="_blank" rel="noopener">https://www.jquery123.com/category/deprecated/deprecated-3.0/</a><br>3.0以后的版本主要弃用的API有：.bind()、.unbind()、.delegate()、.undelegate()、jquery.fx.interval<br>1.9和1.10版本弃用的API有jquery.support()、.context()</p>
+<h3 id="详细问题："><a href="#详细问题：" class="headerlink" title="详细问题："></a>详细问题：</h3><h4 id="1、attr和prop"><a href="#1、attr和prop" class="headerlink" title="1、attr和prop"></a>1、attr和prop</h4><p>attr：获取匹配的元素集合中的第一个元素的属性的值  或 设置每一个匹配元素的一个或多个属性。<br>prop：获取匹配的元素集中第一个元素的属性（property）值或设置每一个匹配元素的一个或多个属性。<br>attr是1.0之后使用的，prop是1.6以后使用的，用法不同，需注意。<br>在jQuery 1.6中,当属性没有被设置时候，.attr()方法将返回undefined。 若要检索和更改DOM属性,比如元素的checked, selected, 或 disabled状态，使用.prop()方法。<br>版本升级最大改动就在这里，之前的代码大量使用attr，没办法。。。</p>
+<h4 id="2、报错：Uncaught-TypeError-url-indexOf-is-not-a-function"><a href="#2、报错：Uncaught-TypeError-url-indexOf-is-not-a-function" class="headerlink" title="2、报错：Uncaught TypeError: url.indexOf is not a function"></a>2、报错：Uncaught TypeError: url.indexOf is not a function</h4><p>这个错误是由于调用了load函数导致的错误<br>把代码里调用load函数的方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//old</span><br><span class="line">$(window).load(function() &#123; ... &#125;);</span><br><span class="line">//new</span><br><span class="line">$(window).on(&apos;load&apos;, function() &#123; ... &#125;);</span><br></pre></td></tr></table></figure></p>
 <p>注意：.load(), .unload(), and .error()从jQuery 1.8开始就被废弃了，换成使用.on()函数来注册。其实这里应该之前1.8的时候就报错，可能都没有注意到，这次正好一次性改完。</p>
-<h4 id="3-browser用法"><a href="#3-browser用法" class="headerlink" title="3.$.browser用法"></a>3.$.browser用法</h4><p>jQuery 1.9不再支持$.browser 和 $.browser.version，取而代之的是 $.support。在更新的 2.0 版本中，将不再支持 IE 6/7/8。<br>当前客户要求的版本3.0+，肯定是不支持IE6/7/8了，先前我们用的是1.8版本，因此现在所有的$.browser用法都报错，页面混乱。</p>
-<p>如果要全面支持 IE，并混合使用 jQuery 1.9 和 2.0， 官方的解决方案是加入以下脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if lt IE 9]&gt;</span><br><span class="line">  &lt;script src=&apos;jquery-1.9.0.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br><span class="line">&lt;!--[if gte IE 9]&gt;</span><br><span class="line">  &lt;script src=&apos;jquery-2.0.0.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-browser用法"><a href="#3-browser用法" class="headerlink" title="3.$.browser用法"></a>3.$.browser用法</h4><p>jQuery 1.9不再支持$.browser 和 $.browser.version，取而代之的是 $.support。在更新的 2.0 版本中，将不再支持 IE 6/7/8。<br>当前客户要求的版本3.0+，肯定是不支持IE6/7/8了，先前我们用的是1.8版本，因此现在所有的$.browser用法都报错，页面混乱。<br>如果要全面支持 IE，并混合使用 jQuery 1.9 和 2.0， 官方的解决方案是加入以下脚本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--[if lt IE 9]&gt;</span><br><span class="line">  &lt;script src=&apos;jquery-1.9.0.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br><span class="line">&lt;!--[if gte IE 9]&gt;</span><br><span class="line">  &lt;script src=&apos;jquery-2.0.0.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">&lt;![endif]--&gt;</span><br></pre></td></tr></table></figure></p>
 <p>从长久来看，这样有利于在复杂情况下根据浏览器特性进行分别处理， 而不是简单的检测浏览器类型和版本。 但目前很多旧程序的移植恐怕无法直接过渡为根据浏览器支持特性， 所以在网上找了一些能够直接替换的解决办法。<br>jQuery1.9之前判断浏览器类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.browser.mozilla = /firefox/.test(navigator.userAgent.toLowerCase()); //firefox</span><br><span class="line">$.browser.webkit = /webkit/.test(navigator.userAgent.toLowerCase()); //webkit内核</span><br><span class="line">$.browser.opera = /opera/.test(navigator.userAgent.toLowerCase()); //opera</span><br><span class="line">$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase()); //IE</span><br></pre></td></tr></table></figure></p>
 <p>等号后面的表达式返回的就是 true/false，可以直接用来替换原来的 $.browser.msie 等。如需要检查是否为 IE6时，可以这么写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Old</span><br><span class="line">if ($.browser.msie &amp;&amp; 7 &gt; $.browser.version)</span><br><span class="line">// New</span><br><span class="line">if (&apos;undefined&apos; == typeof(document.body.style.maxHeight))</span><br><span class="line">检查是否为 IE 6-8：</span><br><span class="line">if (!$.support.leadingWhitespace) &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>$(“#id”).val(index);  之前1.8.2，当index不存在时会默认选取第一个，升级3.3.1之后，如果不存在不会有默认选项，显示也是空白。</p>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>$.post(…). error(function()错误回调方法报错：Uncaught TypeError: $.post(…).error is not a function<br>原因：$.post()使用连缀.error()方法提示错误，连缀方法被.fail()取代</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/03/jQuery升级问题汇总/" data-id="cju1larfg0002d57r5xcu6p50" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/03/jQuery升级问题汇总/" data-id="cju9srde90001se7rw4f0pe7f" class="article-share-link">Share</a>
       
       
     </footer>
