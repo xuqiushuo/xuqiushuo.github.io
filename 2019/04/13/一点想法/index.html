@@ -5,19 +5,19 @@
   
 
   
-  <title>shell启动脚本 | xuqiushuo&#39;s blog</title>
+  <title>一点想法 | xuqiushuo&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单记录shell脚本语法 sfSrc=s show | grep SfCfgName | cut -d &amp;quot;:&amp;quot; -f 2  sfDst=ls usr/S304/etc/oversea  if [ $sfSrc != $sfDst ]; then    echo “SfCfgName is not right”    s SfCfgName oversea/$sfDst  el">
+  <meta name="description" content="1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。2.当前主要用的BRCM、MTK方案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shell启动脚本">
-<meta property="og:url" content="http://yoursite.com/2018/12/09/shellscript/index.html">
+<meta property="og:title" content="一点想法">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/一点想法/index.html">
 <meta property="og:site_name" content="xuqiushuo&#39;s blog">
-<meta property="og:description" content="简单记录shell脚本语法 sfSrc=s show | grep SfCfgName | cut -d &amp;quot;:&amp;quot; -f 2  sfDst=ls usr/S304/etc/oversea  if [ $sfSrc != $sfDst ]; then    echo “SfCfgName is not right”    s SfCfgName oversea/$sfDst  el">
+<meta property="og:description" content="1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。2.当前主要用的BRCM、MTK方案">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-17T14:22:56.336Z">
+<meta property="og:updated_time" content="2019-04-12T17:39:17.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shell启动脚本">
-<meta name="twitter:description" content="简单记录shell脚本语法 sfSrc=s show | grep SfCfgName | cut -d &amp;quot;:&amp;quot; -f 2  sfDst=ls usr/S304/etc/oversea  if [ $sfSrc != $sfDst ]; then    echo “SfCfgName is not right”    s SfCfgName oversea/$sfDst  el">
+<meta name="twitter:title" content="一点想法">
+<meta name="twitter:description" content="1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。2.当前主要用的BRCM、MTK方案">
   
     <link rel="alternate" href="/atom.xml" title="xuqiushuo&#39;s blog" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-shellscript" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-一点想法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/09/shellscript/" class="article-date">
-  <time datetime="2018-12-09T10:36:33.000Z" itemprop="datePublished">2018-12-09</time>
+    <a href="/2019/04/13/一点想法/" class="article-date">
+  <time datetime="2019-04-12T17:01:47.000Z" itemprop="datePublished">2019-04-13</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      shell启动脚本
+      一点想法
     </h1>
   
 
@@ -86,33 +86,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单记录shell脚本语法</p>
-<p>sfSrc=<code>s show | grep SfCfgName | cut -d &quot;:&quot; -f 2</code><br>  sfDst=<code>ls usr/S304/etc/oversea</code><br>  if [ $sfSrc != $sfDst ]; then<br>    echo “SfCfgName is not right”<br>    s SfCfgName oversea/$sfDst<br>  else<br>    echo “SfCfgName is right”<br>  fi</p>
-<p>脚本需要判断升级软件的SF与当前SF是否一致，否则需要修改，直接用s SfCfgName oversea/$sfDst命令修改SF</p>
-<p>主要就是上面这段代码，当时分割字符方法不熟悉，查了一下并整理了笔记</p>
-<p>shell语法整理了一些，包括一些基础命令： <a href="http://note.youdao.com/noteshare?id=ac45a75b8c041019021a68d184852b3b" target="_blank" rel="noopener">http://note.youdao.com/noteshare?id=ac45a75b8c041019021a68d184852b3b</a></p>
-<h1 id="s-show-grep-SfCfgName"><a href="#s-show-grep-SfCfgName" class="headerlink" title="s show | grep SfCfgName"></a>s show | grep SfCfgName</h1><p>SfCfgName:oversea/tejas-4f0-wifi</p>
-<p>sfSrc=<code>s show | grep SfCfgName | cut -d &quot;/&quot; -f 2</code></p>
-<p>#s show | grep SfCfgName | cut -d “/“ -f 2</p>
-<p>tejas-4f0-wifi</p>
-<p>截取后就是tejas-4f0-wifi</p>
-<p>cut是一个选取命令，就是将一段数据经过分析，取出我们想要的。一般来说，选取信息通常是针对“行”来进行分析的，并不是整篇信息分析的。</p>
-<p>其语法格式为： </p>
-<p>cut [-bn] [file] 或 cut [-c] [file] 或 cut [-df] [file] </p>
-<p>使用说明: </p>
-<p>cut 命令从文件的每一行剪切字节、字符和字段并将这些字节、字符和字段写至标准输出。 </p>
-<p>如果不指定 File 参数，cut 命令将读取标准输入。必须指定 -b、-c 或 -f 标志之一。 </p>
-<p>主要参数 </p>
-<p>-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。 </p>
-<p>-c ：以字符为单位进行分割。 </p>
-<p>-d ：自定义分隔符，默认为制表符。 </p>
-<p>-f ：与-d一起使用，指定显示哪个区域。 </p>
-<p>-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的范围之内，该字符将被写出；否则，该字符将被排除。</p>
+        <p>1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。<br>2.当前主要用的BRCM、MTK方案，平台代码维护开发是在平时项目中去完成，很少有专门去重构某个模块（最近难得参与了核心模块的重构，但速度很缓慢），就算重构，难度也是不小，需要业务熟练、代码功力到位才行，所以总的来说实战开发的机会不是很多，大多数时间都是在看代码、解bug，主要是在这里熟悉业务才是关键（做网络的，WAN连接及各种协议，还有WI-FI等），个人觉得不如直接的开发成长快。如果在这里呆久的话，可能会更熟悉业务技术，而对编程功力提升相对缓慢（主要靠自己）。<br>3.本身是想做java开发，然后最近对安卓开发有点兴趣，还想着玩一玩go语言，并发性可以，语言比较简练体系比较完善，还有gc，这点要优于C/C++，自己要加油，不能停吖！<br>4.最近还迷恋跑步，运动排毒，保持身体素质，毕竟加班不会少，多跑跑纠正下颈椎，保持大脑供血。。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjuecwx630007al7rimp8vgdv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/一点想法/" data-id="cjuecwx600005al7r8zkwbuad" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,19 +100,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/03/17/5iomodel/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          常见五种IO模型
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/09/first/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/04/03/jQuery升级问题汇总/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">博客push失败原因</div>
+      <div class="article-nav-title">jQuery升级问题汇总</div>
     </a>
   
 </nav>
