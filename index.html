@@ -62,6 +62,61 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-搭建speedtest测速服务器" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/04/17/搭建speedtest测速服务器/" class="article-date">
+  <time datetime="2019-04-17T15:44:03.000Z" itemprop="datePublished">2019-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/17/搭建speedtest测速服务器/">搭建speedtest测速服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>speedtest源码：<a href="https://github.com/adolfintel/speedtest" target="_blank" rel="noopener">https://github.com/adolfintel/speedtest</a><br>服务器安装指导：<a href="https://freedif.org/how-to-install-selfhosted-speedtest" target="_blank" rel="noopener">https://freedif.org/how-to-install-selfhosted-speedtest</a><br>用同事ubuntu系统安装php环境时，一直不成功，缺少很多依赖，是源的问题，不如自己动手装个虚拟机吧，一开始装了server版（因为server版预装了LMAP且只有800多M），但上不了网，照例vi也不好用，需要重新安装，NAT网络也不行，更别说桥接，只好装了大家伙桌面版</p>
+<p>一个重要部分就是需要设置桥接网络，这样虚拟机可以直接使用同网段IP和client通信。</p>
+<p>根据speedsever安装指导，先安装php和git环境，clone 源码，配置一下apache服务器，用a2ensite激活apache文件夹下sites-available配置的站点，也就是本机IP，sudo a2ensite speedtest，再重新加载一下apache配置systemctl reload apache2，就可以使用client访问了。</p>
+<p>页面风格提供了几种可选，在speedtest目录下可以cp对应的html文件到html目录下的index.html<br>在/etc/apache2/sites-availabl下需要创建speedtest.conf配置文件：<br>sudo vi /etc/apache2/sites-available/，内容如下：<br>···</p>
+<virtualhost ：80="">
+
+<pre><code>    ServerAdmin webmaster@localhost
+    ServerName ip
+    DocumentRoot /var/www/speedtest
+
+    &lt;Directory /var/www/speedtest&gt;
+       Options FollowSymLinks
+       AllowOverride All
+       Require all granted
+    &lt;/Directory&gt;
+
+ErrorLog ${APACHE_LOG_DIR}/speedtest_error.log
+CustomLog ${APACHE_LOG_DIR}/speedtest_access.log combined
+</code></pre><p></p></virtualhost><br>···<p></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/04/17/搭建speedtest测速服务器/" data-id="cjulf8f3u0006ud5huw4mcg16" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-一点想法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/04/13/一点想法/" class="article-date">
@@ -84,12 +139,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。<br>2.当前主要用的BRCM、MTK方案，平台代码维护开发是在平时项目中去完成，很少有专门去重构某个模块（最近难得参与了核心模块的重构，但速度很缓慢），就算重构，难度也是不小，需要业务熟练、代码功力到位才行，所以总的来说实战开发的机会不是很多，大多数时间都是在看代码、解bug，主要是在这里熟悉业务才是关键（做网络的，WAN连接及各种协议，还有WI-FI等），个人觉得不如直接的开发成长快。如果在这里呆久的话，可能会更熟悉业务技术，而对编程功力提升相对缓慢（主要靠自己）。<br>3.本身是想做java开发，然后最近对安卓开发有点兴趣，还想着玩一玩go语言，并发性可以，语言比较简练体系比较完善，还有gc，这点要优于C/C++，自己要加油，不能停吖！<br>4.最近还迷恋跑步，运动排毒，保持身体素质，毕竟加班不会少，多跑跑纠正下颈椎，保持大脑供血。。</p>
+        <p>1.对嵌入式感觉有点迷茫，虽然嵌入式本身的linux系统开发可玩性很高，但说实话难度不小，除了底层，一般都是包裹一层业务的外衣，尤其做无线，无线是一二层功能，真正的驱动开发是芯片商做的，我们更多是从理论上去解决问题、提升无线品质，802.11a/b/g/n/ac/ax等等，是一个系统的知识架构，慢慢积累、潜心研究才能真正出师，难度相当不小，业务理论强于编码。。。<br>2.当前主要用的BRCM、MTK方案，平台代码维护开发是在平时项目中去完成，很少有专门去重构某个模块（最近难得参与了核心模块的重构，但速度很缓慢），就算重构，难度也是不小，需要业务熟练、代码功力到位才行，所以总的来说实战开发的机会不是很多，大多数时间都是在看代码、解bug，主要是在这里熟悉业务才是关键（做网络的，WAN连接及各种协议，还有WI-FI等），个人觉得不如直接的开发成长快。如果在这里呆久的话，可能会更熟悉业务技术，而对编程功力提升相对缓慢（主要靠自己）。<br>3.最近对安卓开发有点兴趣，还想着玩一玩go语言，并发性可以，语言比较简练体系比较完善，还有gc，这点要优于C/C++，自己要加油，不能停吖！<br>4.最近还迷恋跑步，运动排毒，保持身体素质，毕竟加班不会少，多跑跑纠正下颈椎，保持大脑供血。。</p>
+<p>最后，还是做好眼前事先，慢慢积累～～～～</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/13/一点想法/" data-id="cjuecwx600005al7r8zkwbuad" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/13/一点想法/" data-id="cjulf8f3r0004ud5h5ikf5a4z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/03/jQuery升级问题汇总/" data-id="cjuecwx5x0003al7rxnncfflq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/03/jQuery升级问题汇总/" data-id="cjulf8f3p0002ud5h4ils5thp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/" data-id="cjuecwx620006al7rrbcrdx2y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/27/ipv6服务器及环境搭建/" data-id="cjulf8f3q0003ud5hrnue6eyi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -223,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/24/mem-manage-md/" data-id="cjuecwx5z0004al7rc3v3ep13" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/24/mem-manage-md/" data-id="cjulf8f3v0007ud5hn6nsqx7c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -267,7 +323,7 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjuecwx670008al7rix2s9pe0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/18/MD5算法及token生成/" data-id="cjulf8f460009ud5h5aiuczox" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +372,7 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/17/5iomodel/" data-id="cjuecwx5k0000al7r7kxfx58x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/17/5iomodel/" data-id="cjulf8f3n0001ud5h247tyt39" class="article-share-link">Share</a>
       
       
     </footer>
@@ -374,7 +430,7 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjuecwx630007al7rimp8vgdv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/shellscript/" data-id="cjulf8f3w0008ud5hm66bpsrn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -419,7 +475,7 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/first/" data-id="cjuecwx5v0002al7r0zmhgn4h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/first/" data-id="cjulf8f3f0000ud5hdn6kcfjy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -464,7 +520,7 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjuecwx5s0001al7rt537sema" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/25/hello-world/" data-id="cjulf8f3s0005ud5h004w0hnh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -505,6 +561,10 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
       <ul>
         
           <li>
+            <a href="/2019/04/17/搭建speedtest测速服务器/">搭建speedtest测速服务器</a>
+          </li>
+        
+          <li>
             <a href="/2019/04/13/一点想法/">一点想法</a>
           </li>
         
@@ -518,10 +578,6 @@ MD5将任意长度的“字节串”变换成一个128bit的大整数，并且�
         
           <li>
             <a href="/2019/03/24/mem-manage-md/">关于内存管理</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/18/MD5算法及token生成/">MD5算法及token生成</a>
           </li>
         
       </ul>
